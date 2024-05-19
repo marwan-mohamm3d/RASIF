@@ -1,0 +1,9 @@
+﻿  main.cpp
+D:\progects me\visual stodi\schedual maker\table.h(377,130): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\progects me\visual stodi\schedual maker\main.cpp(7,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  table.cpp
+D:\progects me\visual stodi\schedual maker\table.h(377,130): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generating Code...
+  main.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  schedual maker.vcxproj -> D:\progects me\visual stodi\schedual maker\x64\Release\schedual maker.exe

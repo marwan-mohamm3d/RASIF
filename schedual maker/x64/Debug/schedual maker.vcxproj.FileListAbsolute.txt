@@ -1,0 +1,5 @@
+D:\progects me\visual stodi\schedual maker\x64\Debug\schedual maker.vcxproj.AssemblyReference.cache
+D:\progects me\visual stodi\schedual maker\x64\Debug\schedual maker.vcxproj.SuggestedBindingRedirects.cache
+D:\progects me\visual stodi\schedual maker\x64\Debug\schedual maker.vcxproj.GenerateResource.cache
+D:\progects me\visual stodi\schedual maker\x64\Debug\schedual maker.exe
+D:\progects me\visual stodi\schedual maker\x64\Debug\schedualmaker.table.resources
