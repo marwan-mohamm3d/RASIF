@@ -21,18 +21,21 @@ struct block
   int day,startH,startM,finishH,finishM;
   bool val[valves];
 };
-block blocks[10];
+block blocks[40];
 int countLines()
 {
+  file = SD.open(fileName);
   int x=0;
   char ch;
-  while (file.available())
+  while(file.available())
   {
-    ch = file.read();
-    if (ch == '\n')
+    ch = file.read()
+    Serial.print(ch);
+    if(ch == '\n')
+    {
       x++;
+    }
   }
-  file.seek(0);
   return x;
 }
 void updateClose()
@@ -62,18 +65,17 @@ void StrloadVlave(String x)//for SIM messaaegs
   for(int i=0;i<x.length()-1;i++)
   {
     digitalWrite(14+i,((int)x[i])-48 );
-    Serial.println("-");
-    Serial.print((14+i));
-    Serial.print("::");
-    Serial.print(((int)x[i])-48);
-
+    Serial.print(14+i);
+    Serial.print(':');
+    Serial.println(((int)x[i])-48 );
   }
 }
 
-String readLine()
+String readLine()//error hhere
 {
-  String received = "";
+  String received = "12345";
   char ch;
+  
   while (file.available())
   {
     ch = file.read();
@@ -92,6 +94,7 @@ String readLine()
 void initializeSD()
 {
   Serial.println("initializing sd");
+  SD.begin();
   if(SD.begin())//checks if SD is ready
   {
     return NULL;//exit function
@@ -152,6 +155,7 @@ void setup()
   pinMode(19,OUTPUT);
   Serial.begin(9600);
   SD.begin(10);
+  initializeSD();
   file = SD.open("table1.dat");
   sim800.begin(9600);
   Serial.println("opened succusuflly");
@@ -159,9 +163,8 @@ void setup()
   h = rtc.getTime().hour;
   m = rtc.getTime().min;
   d = getDay();
-  Serial.println(h);
-  initializeSD();
   int lines = countLines();
+  Serial.print(lines);
   for(int i=0;i<lines;i++)//loading all the blocks
   {
     String x = readLine();
@@ -197,6 +200,27 @@ void checkMassages()
 }
 
 void loop() {
+  Serial.print("d:");
+  Serial.print(d);
+  Serial.print(" h:");
+  Serial.print(h);
+  Serial.print(" m:");
+  Serial.print(m);
+  Serial.print(" s: ");
+  Serial.print(rtc.getTime().sec);
+  
+  Serial.print(" nL:");
+  Serial.println(countLines());
+  Serial.print(" next teablea D:");
+
+  Serial.print(blocks[lastClose].day);
+  Serial.print(" h:");
+  Serial.print(blocks[lastClose].startH);
+  Serial.print(" m:");
+  Serial.println(blocks[lastClose].startM);
+
+
+  
   //for reciving SMS
   checkMassages();
 //for the simcard
